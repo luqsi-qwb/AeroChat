@@ -1,0 +1,32 @@
+# 编译输出目录
+build/
+bin/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+
+# Qt Creator / VSCode / IDE 配置
+.vscode/
+*.user
+*.pro.user
+*.cache/
+*.idea/
+
+# CMake 文件
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# 临时文件
+*.log
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+
+# 其他可能的系统文件
+Thumbs.db
