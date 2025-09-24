@@ -22,7 +22,7 @@ Status StatusServiceImpl::GetChatServer(ServerContext* context, const GetChatSer
 	reply->set_port(server.port);
 	reply->set_error(ErrorCodes::Success);
 	reply->set_token(generate_unique_string());
-	insertToken(request->uid(), reply->token());
+	insertToken(request->uid(), reply->token());//将uid和对应的token插入redis中
 	return Status::OK;
 }
 
@@ -131,7 +131,7 @@ void StatusServiceImpl::insertToken(int uid, std::string token)
 	std::string token_key = USERTOKENPREFIX + uid_str;
 
 	cout << "检查插入信息是否出现错误" << endl;
-	cout << "插入的uid是：" << uid_str << "     插入的token是" << token << endl;
+	cout << "插入的uid是:" << uid_str << "     插入的token是" << token << endl;
 	RedisMgr::GetInstance()->Set(token_key, token);
 }
 

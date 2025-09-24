@@ -9,6 +9,7 @@
 #include "ConfigMgr.h"
 #include"RedisMgr.h"
 #include"ChatServiceImpl.h"
+#include "Logger.h"
 bool bstop = false;
 std::condition_variable cond_quit;
 std::mutex mutex_quit;
@@ -17,6 +18,8 @@ std::mutex mutex_quit;
 
 int main()
 {
+    //初始化日志库
+    AeroChat::Logger::Init("ChatSerevr1");
     auto& cfg = ConfigMgr::Inst();
     auto server_name = cfg["SelfServer"]["Name"];
     try {

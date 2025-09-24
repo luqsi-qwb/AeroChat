@@ -9,6 +9,15 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_FILE_OFFSET_BITS=64")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+# 默认使用 Debug 构建
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+# 调试和发布的编译选项
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+
 # ----------------------
 # 查找 hiredis
 # ----------------------
@@ -59,6 +68,7 @@ find_package(Boost 1.86 REQUIRED COMPONENTS filesystem system)
 # ----------------------
 find_package(Protobuf REQUIRED)
 find_package(gRPC CONFIG REQUIRED)
+find_package(spdlog REQUIRED)
 
 # ----------------------
 # 公共库
@@ -71,6 +81,7 @@ set(COMMON_LIBS
     jsoncpp
     ${HIREDIS_LIBRARY}
     ${MYSQLCPP_LIBRARY}
+    spdlog::spdlog
 )
 
 # ----------------------

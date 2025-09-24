@@ -14,6 +14,7 @@ bin/
 *.pro.user
 *.cache/
 *.idea/
+*.json
 
 # CMake 文件
 CMakeFiles/

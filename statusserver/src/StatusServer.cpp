@@ -5,6 +5,7 @@
 #include "AsioIOServicePool.h"
 #include <thread>
 #include "StatusServiceImpl.h"
+#include "Logger.h"
 void RunServer() {
 	auto& cfg = ConfigMgr::Inst();
 
@@ -43,6 +44,7 @@ void RunServer() {
 }
 
 int main(int argc, char** argv) {
+	AeroChat::Logger::Init("StatusServer");
 	try {
 		RunServer();
 	}

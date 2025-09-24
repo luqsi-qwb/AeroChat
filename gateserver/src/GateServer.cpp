@@ -5,10 +5,13 @@
 #include"const.h"
 #include"RedisMgr.h"
 #include"MysqlMgr.h"
+#include"Logger.h"
 
 
 int main()
 {
+    //初始化日志库
+    AeroChat::Logger::Init("GateServer");
     try
     {
         RedisMgr::GetInstance();
